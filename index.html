@@ -1,124 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Mini Precios — Distribuidor Ninja México</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Precios | Distribuidor Ninja México</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
-  <header class="header container">
-    <a class="brand" href="index.html">
-      <div class="logo">N</div>
-      <div>
-        <h1>Mini Precios</h1>
-        <p>Distribuidor autorizado Ninja México</p>
-      </div>
-    </a>
+  <!-- Splash Screen -->
+  <div id="loader">
+    <div class="loader-content">
+      <h1>Mini Precios</h1>
+      <p>Distribuidor oficial Ninja México</p>
+    </div>
+  </div>
 
-    <nav class="nav">
+  <header>
+    <div class="logo">
+      <h1>Mini Precios</h1>
+      <button id="menu-toggle" class="menu-toggle">☰</button>
+    </div>
+    <nav id="nav-menu">
       <a href="index.html" class="active">Inicio</a>
-      <a href="catalogo.html">Catálogo</a>
       <a href="nosotros.html">Nosotros</a>
-      <a href="porque.html">Por qué</a>
+      <a href="catalogo.html">Productos</a>
+      <a href="porque.html">Por qué Ninja</a>
       <a href="soporte.html">Soporte</a>
       <a href="testimonios.html">Testimonios</a>
       <a href="contacto.html">Contacto</a>
       <a href="blog.html">Blog</a>
     </nav>
-
-    <div class="controls">
-      <button class="btn-ghost" onclick="toggleMobileMenu()">☰</button>
-      <button class="btn-ghost" onclick="toggleTheme()">🌗</button>
-    </div>
+    <button class="dark-toggle" onclick="toggleTheme()">🌙</button>
   </header>
 
-  <main class="container">
-    <section class="hero fade-up">
-      <div class="hero-left">
-        <h2>La potencia que transforma tu cocina</h2>
-        <p class="lead">Tecnología Ninja en México — equipos versátiles, duraderos y con soporte local.</p>
-        <div class="hero-cta">
-          <a href="catalogo.html" class="btn">Ver catálogo</a>
-          <a href="contacto.html" class="btn-ghost">Contáctanos</a>
-        </div>
-      </div>
-      <div>
-        <img class="hero-img" src="https://m.media-amazon.com/images/I/81Mhmz7WZmL.jpg" alt="Productos Ninja">
-      </div>
-    </section>
-
-    <section class="section fade-up">
-      <h2>Productos destacados</h2>
-      <p class="lead">Seleccionados por rendimiento y valoración de usuarios.</p>
-      <div class="grid">
-        <!-- Cards -->
-        <div class="card" data-cat="freidoras">
-          <img src="https://m.media-amazon.com/images/I/71%2B8uTMDRFL.jpg" alt="AF101">
-          <h3>Ninja AF101 — Freidora 4 en 1</h3>
-          <p class="muted">Compacta, 3.8 L • 1,550 W • Multi-función</p>
-          <div class="meta"><div class="price">$3,199 MXN</div><button class="btn-ghost" onclick="openQuoteModal('Ninja AF101',3199)">Cotizar</button></div>
-        </div>
-
-        <div class="card" data-cat="licuadoras">
-          <img src="https://ss625.liverpool.com.mx/xl/1124329040.jpg" alt="CT610">
-          <h3>Ninja CT610 — Licuadora</h3>
-          <p class="muted">Auto-IQ • 1000W • Jarra 2.1 L</p>
-          <div class="meta"><div class="price">$4,449 MXN</div><button class="btn-ghost" onclick="openQuoteModal('Ninja CT610',4449)">Cotizar</button></div>
-        </div>
-
-        <div class="card" data-cat="hornos">
-          <img src="https://m.media-amazon.com/images/I/81Mhmz7WZmL.jpg" alt="DT201">
-          <h3>Ninja Foodi DT201</h3>
-          <p class="muted">21 L • 10 funciones • Foodi 10 en 1</p>
-          <div class="meta"><div class="price">$6,499 MXN</div><button class="btn-ghost" onclick="openQuoteModal('Ninja DT201',6499)">Cotizar</button></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-up">
-      <h2>¿Por qué elegir Ninja?</h2>
-      <div class="grid">
-        <div class="card small"><h3>Innovación</h3><p class="muted">Auto-IQ y funciones inteligentes.</p></div>
-        <div class="card small"><h3>Durabilidad</h3><p class="muted">Materiales de alta calidad.</p></div>
-        <div class="card small"><h3>Soporte</h3><p class="muted">Garantía y servicio en México.</p></div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="footer container">© 2025 Mini Precios — soporte@ninjamexico.com</footer>
-
-  <!-- MODAL BACKDROP & MODAL (global) -->
-  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true"></div>
-
-  <div id="quoteModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="btn-ghost" style="position:absolute;right:12px;top:12px" onclick="closeQuoteModal()">✕</button>
-    <h4 id="modalTitle">Solicitar cotización</h4>
-    <form id="quoteForm" onsubmit="submitQuote(event)">
-      <label>Producto</label>
-      <input id="q-product" class="input" readonly>
-
-      <div class="grid-2">
-        <input id="q-name" class="input" placeholder="Nombre completo" required>
-        <input id="q-phone" class="input" placeholder="Teléfono / Whatsapp" required>
-      </div>
-
-      <input id="q-email" class="input" placeholder="Correo electrónico" type="email" required>
-      <label>Mensaje / Detalles</label>
-      <textarea id="q-msg" class="input" rows="4" placeholder="Ej: Necesito 2 unidades, entrega CDMX" required></textarea>
-
-      <div class="modal-actions">
-        <button type="button" class="btn-ghost" onclick="closeQuoteModal()">Cancelar</button>
-        <button type="submit" class="btn">Enviar cotización</button>
-      </div>
-    </form>
-
-    <div id="quoteSuccess" style="display:none;text-align:center;margin-top:10px">
-      <h4>¡Solicitud enviada!</h4>
-      <p>Te contactaremos pronto.</p>
+  <section id="inicio" class="hero">
+    <div class="hero-text">
+      <h2>La potencia que transforma tu cocina</h2>
+      <p>Comercializadora y Abastecedora Mini Precios S.A. de C.V. distribuye productos Ninja en México con calidad e innovación.</p>
+      <a href="catalogo.html" class="btn">Explora nuestros productos</a>
     </div>
-  </div>
+    <img src="https://m.media-amazon.com/images/I/81Mhmz7WZmL.jpg" alt="Productos Ninja" class="hero-img" />
+  </section>
+
+  <section id="ventajas">
+    <h2>Por qué elegir Ninja</h2>
+    <div class="beneficios">
+      <div>⚙️ Tecnología innovadora</div>
+      <div>💎 Alta durabilidad</div>
+      <div>✨ Diseño moderno</div>
+      <div>🛠️ Garantía y soporte</div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Comercializadora y Abastecedora Mini Precios S.A. de C.V.
+  </footer>
 
   <script src="script.js"></script>
 </body>
