@@ -1,36 +1,43 @@
-/* -----------------------------
+/* ==============================
    ESTILOS GENERALES
-------------------------------*/
+============================== */
 :root {
-  --azul: #0a2a66;
-  --gris: #f6f7f9;
-  --amarillo: #f3c623;
-  --texto: #333;
-  --blanco: #fff;
-  --trans: all 0.3s ease;
+  --color-primario: #1e2a5a;
+  --color-secundario: #ffd43b;
+  --texto-oscuro: #222;
+  --texto-claro: #f8f9fa;
+  --fondo-claro: #ffffff;
+  --fondo-oscuro: #121212;
 }
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: var(--gris);
-  color: var(--texto);
-  overflow-x: hidden;
+  background: var(--fondo-claro);
+  color: var(--texto-oscuro);
+  transition: background 0.3s, color 0.3s;
 }
 
-/* -----------------------------
-   HEADER Y MENÚ
-------------------------------*/
+body.dark {
+  background: var(--fondo-oscuro);
+  color: var(--texto-claro);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==============================
+   HEADER / NAVBAR
+============================== */
 header {
-  background: var(--azul);
-  color: var(--blanco);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background: var(--color-primario);
+  color: white;
 }
 
 header h1 {
@@ -38,155 +45,198 @@ header h1 {
   margin: 0;
 }
 
-nav {
-  display: flex;
-  gap: 1rem;
-}
-
 nav a {
-  color: var(--blanco);
-  text-decoration: none;
+  color: white;
+  margin-left: 1rem;
   font-weight: 500;
-  transition: var(--trans);
 }
 
 nav a:hover {
-  color: var(--amarillo);
+  color: var(--color-secundario);
+  text-decoration: underline;
 }
 
-/* Botón de modo oscuro */
-.toggle-theme {
-  background: transparent;
-  border: 2px solid var(--blanco);
-  color: var(--blanco);
-  border-radius: 50px;
-  padding: 0.4rem 0.8rem;
+button.dark-toggle {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
   cursor: pointer;
-  transition: var(--trans);
 }
 
-.toggle-theme:hover {
-  background: var(--amarillo);
-  color: var(--azul);
-}
-
-/* -----------------------------
-   SECCIONES Y CONTENEDORES
-------------------------------*/
-section {
+/* ==============================
+   HERO / INICIO
+============================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
   padding: 3rem 2rem;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  color: var(--color-primario);
+}
+
+.hero-text p {
+  line-height: 1.5;
+  font-size: 1.1rem;
+}
+
+.btn {
+  background: var(--color-secundario);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ==============================
+   PRODUCTOS / CATÁLOGO
+============================== */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.producto {
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.producto:hover {
+  transform: translateY(-6px);
+}
+
+.precio {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* ==============================
+   SECCIONES GENERALES
+============================== */
+section {
+  padding: 2rem;
   max-width: 1200px;
   margin: auto;
 }
 
 h2 {
-  color: var(--azul);
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  color: var(--color-primario);
 }
 
-p {
-  line-height: 1.6;
-}
-
-/* -----------------------------
-   HERO (PANTALLA INICIO)
-------------------------------*/
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.hero img {
-  width: 50%;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.hero .content {
-  flex: 1;
-}
-
-.hero .content h2 {
-  font-size: 2.2rem;
-}
-
-.hero .content p {
-  font-size: 1.1rem;
-}
-
-.hero .btn {
-  background: var(--amarillo);
-  color: var(--azul);
-  padding: 0.8rem 1.4rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-  transition: var(--trans);
-}
-
-.hero .btn:hover {
-  background: var(--azul);
-  color: var(--blanco);
-}
-
-/* -----------------------------
-   CATÁLOGO DE PRODUCTOS
-------------------------------*/
-.catalogo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 1.5rem;
-}
-
-.producto {
-  background: var(--blanco);
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.producto:hover {
-  transform: translateY(-5px);
-}
-
-.producto img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.producto-info {
-  padding: 1rem;
-}
-
-.producto-info h3 {
-  color: var(--azul);
-  font-size: 1.1rem;
-}
-
-.producto-info p {
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background: var(--color-primario);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
   font-size: 0.9rem;
-  color: #555;
 }
 
-/* -----------------------------
-   FORMULARIOS
-------------------------------*/
+/* ==============================
+   FORMULARIO DE CONTACTO
+============================== */
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 600px;
+  max-width: 500px;
   margin: auto;
 }
 
 form input,
 form textarea {
-  padding: 0.8rem
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+form button {
+  background: var(--color-secundario);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #facc15;
+}
+
+/* ==============================
+   RESPONSIVE (CELULAR)
+============================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .hero img {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  .producto img {
+    max-height: 180px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
