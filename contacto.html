@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Contacto — Mini Precios</title><link rel="stylesheet" href="styles.css"/></head>
+<body>
+  <header class="header container"><a class="brand" href="index.html"><div class="logo">N</div><div><h1>Mini Precios</h1></div></a>
+  <nav class="nav"><a href="index.html">Inicio</a><a href="catalogo.html">Catálogo</a><a href="contacto.html" class="active">Contacto</a></nav>
+  <div class="controls"><button class="icon-btn" onclick="toggleMobileMenu()">☰</button><button class="icon-btn" onclick="toggleTheme()">🌗</button></div></header>
+
+  <main class="container">
+    <section class="section"><h2>Contáctanos</h2>
+      <form id="contactForm" onsubmit="enviarContacto(event)" class="card">
+        <input id="c-name" class="input" placeholder="Tu nombre" required>
+        <input id="c-email" class="input" type="email" placeholder="Tu correo" required>
+        <input id="c-phone" class="input" placeholder="Teléfono">
+        <textarea id="c-msg" class="input" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+          <button type="reset" class="btn-outline">Limpiar</button>
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer container">© 2025 Mini Precios — soporte@ninjamexico.com</footer>
+
+  <script>
+    // simple handler local (no backend)
+    function enviarContacto(e){
+      e.preventDefault();
+      alert('Gracias. Tu mensaje ha sido enviado (simulado).');
+      e.target.reset();
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
