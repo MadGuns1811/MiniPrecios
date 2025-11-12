@@ -1,43 +1,26 @@
-// 🌗 Modo oscuro persistente
+// ==============================
+// MODO OSCURO
+// ==============================
 function toggleTheme() {
   document.body.classList.toggle('dark');
-  const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-  localStorage.setItem('theme', theme);
+  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
 }
 
+// Mantener tema seleccionado
 window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-  }
-
-  // 📱 Menú hamburguesa
-  const menuBtn = document.getElementById('menu-toggle');
-  const navMenu = document.getElementById('nav-menu');
-  if (menuBtn && navMenu) {
-    menuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
-    });
-  }
+  const tema = localStorage.getItem('theme');
+  if (tema === 'dark') document.body.classList.add('dark');
 });
 
-// 🌀 Splash Screen
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  if (loader) {
-    setTimeout(() => {
-      loader.classList.add("fade-out");
-      setTimeout(() => loader.remove(), 1000);
-    }, 1000);
-  }
-});
-
-// 📩 Formulario de contacto (si aplica)
+// ==============================
+// FORMULARIO DE CONTACTO
+// ==============================
 function enviarMensaje(e) {
   e.preventDefault();
-  const confirm = document.getElementById('confirmacion');
-  if (confirm) {
-    confirm.style.display = 'block';
-    setTimeout(() => (confirm.style.display = 'none'), 4000);
-  }
+  const confirmacion = document.createElement('p');
+  confirmacion.textContent = "¡Mensaje enviado con éxito!";
+  confirmacion.style.color = "green";
+  e.target.appendChild(confirmacion);
   e.target.reset();
+  setTimeout(() => confirmacion.remove(), 4000);
 }
