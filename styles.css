@@ -1,242 +1,213 @@
-/* ==============================
-   ESTILOS GENERALES
-============================== */
 :root {
-  --color-primario: #1e2a5a;
-  --color-secundario: #ffd43b;
-  --texto-oscuro: #222;
-  --texto-claro: #f8f9fa;
-  --fondo-claro: #ffffff;
+  --azul: #1e2a5a;
+  --amarillo: #ffd43b;
+  --fondo-claro: #f8f9fa;
+  --texto-claro: #212529;
   --fondo-oscuro: #121212;
+  --texto-oscuro: #f1f1f1;
 }
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: var(--fondo-claro);
-  color: var(--texto-oscuro);
-  transition: background 0.3s, color 0.3s;
+  color: var(--texto-claro);
+  transition: background 0.4s, color 0.4s;
 }
 
 body.dark {
   background: var(--fondo-oscuro);
-  color: var(--texto-claro);
+  color: var(--texto-oscuro);
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ==============================
-   HEADER / NAVBAR
-============================== */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: var(--color-primario);
+  background: var(--azul);
   color: white;
-}
-
-header h1 {
-  font-size: 1.6rem;
-  margin: 0;
 }
 
 nav a {
   color: white;
-  margin-left: 1rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
   font-weight: 500;
 }
 
 nav a:hover {
-  color: var(--color-secundario);
   text-decoration: underline;
 }
 
-button.dark-toggle {
-  background: none;
-  border: 1px solid white;
-  color: white;
-  padding: 0.5rem 0.8rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* ==============================
-   HERO / INICIO
-============================== */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 2rem;
-  padding: 3rem 2rem;
+  padding: 2rem;
 }
 
 .hero img {
   width: 100%;
-  max-width: 500px;
-  border-radius: 15px;
-}
-
-.hero-text h2 {
-  font-size: 2rem;
-  color: var(--color-primario);
-}
-
-.hero-text p {
-  line-height: 1.5;
-  font-size: 1.1rem;
-}
-
-.btn {
-  background: var(--color-secundario);
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-}
-
-/* ==============================
-   PRODUCTOS / CATÁLOGO
-============================== */
-.productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.producto {
-  background: #f8f9fa;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.producto img {
-  width: 100%;
-  height: auto;
   border-radius: 10px;
   object-fit: cover;
 }
 
-.producto:hover {
-  transform: translateY(-6px);
-}
-
-.precio {
-  font-weight: bold;
-  color: #007bff;
-}
-
-/* ==============================
-   SECCIONES GENERALES
-============================== */
 section {
   padding: 2rem;
   max-width: 1200px;
   margin: auto;
 }
 
-h2 {
-  text-align: center;
-  color: var(--color-primario);
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
-/* ==============================
-   FOOTER
-============================== */
+.producto {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+}
+
+body.dark .producto {
+  background: #1e1e1e;
+}
+
+.foda-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.foda {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .foda {
+  background: #1e1e1e;
+}
+
 footer {
-  background: var(--color-primario);
-  color: white;
   text-align: center;
   padding: 1.5rem;
-  font-size: 0.9rem;
+  background: var(--azul);
+  color: white;
+  margin-top: 2rem;
 }
 
-/* ==============================
-   FORMULARIO DE CONTACTO
-============================== */
-form {
-  max-width: 500px;
-  margin: auto;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  font-family: inherit;
-}
-
-form button {
-  background: var(--color-secundario);
+button, .btn {
+  background: var(--amarillo);
+  color: black;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dark-toggle {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-form button:hover {
-  background: #facc15;
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  background: #f9f9f9;
 }
 
-/* ==============================
-   RESPONSIVE (CELULAR)
-============================== */
+body.dark .contacto-form input,
+body.dark .contacto-form textarea {
+  background: #2b2b2b;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* ============================
+   RESPONSIVE PARA CELULARES
+============================ */
 @media (max-width: 768px) {
+
   header {
     flex-direction: column;
-    align-items: flex-start;
+    text-align: center;
+    padding: 1rem;
   }
 
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  nav a {
+    margin: 0.3rem;
+    font-size: 0.95rem;
   }
 
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .hero img {
     max-width: 90%;
     margin: auto;
+    border-radius: 12px;
   }
 
-  .hero-text h2 {
+  .hero h2 {
     font-size: 1.5rem;
   }
 
-  section {
-    padding: 1rem;
+  .productos {
+    grid-template-columns: 1fr;
+  }
+
+  .producto {
+    margin: 0 auto;
+    width: 90%;
   }
 
   .producto img {
-    max-height: 180px;
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+  }
+
+  section {
+    padding: 1.5rem 1rem;
   }
 
   footer {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+
+  .contacto-form input,
+  .contacto-form textarea {
+    font-size: 1rem;
   }
 }
